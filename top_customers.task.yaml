@@ -7,7 +7,7 @@ slug: top_customers
 name: top_customers
 
 # A human-readable description for your task.
-# description: "My Airplane task"
+description: "Retrieves the 3 top customers"
 
 # A list of inputs to your task.
 # parameters:
@@ -40,7 +40,7 @@ name: top_customers
 # Configuration for a SQL task.
 sql:
   # The name of a database resource.
-  resource: ""
+  resource: "airplane-mysql"
 
   # The path to the .sql file containing the logic for this task. This can be
   # absolute or relative to the location of the definition file. The contents

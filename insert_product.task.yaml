@@ -1,41 +1,24 @@
 # Full reference: https://docs.airplane.dev/tasks/task-definition
 
 # Used by Airplane to identify your task. Do not change.
-slug: select_categories
+slug: insert_product
 
 # A human-readable name for your task.
-name: select_categories
+name: insert_product
 
 # A human-readable description for your task.
-# description: "My Airplane task"
+description: "Create a new product and its inventory"
 
 # A list of inputs to your task.
-# parameters:
-# -
-#   # An identifier for the parameter, which can be used in JavaScript
-#   # templates (https://docs.airplane.dev/runbooks/javascript-templates).
-#   slug: name
-#   # A human-readable name for the parameter.
-#   name: Name
-#   # The type of parameter. Valid values: shorttext, longtext, sql, boolean,
-#   # upload, integer, float, date, datetime, configvar.
-#   type: shorttext
-#   # A human-readable description of the parameter.
-#   description: The user's name.
-#   # The default value of the parameter.
-#   default: Alfred Pennyworth
-#   # Set to false to indicate that this parameter. is optional. Default: true.
-#   required: false
-#   # A list of options to constrain the parameter values. For configvar types,
-#   # each option needs to be an object with a label (value to show to user) and
-#   # a config (name of the config var). For all other types, each option can be
-#   # a single value or an object with a label and a value.
-#   options:
-#   - Alfred Pennyworth
-#   - label: Batman
-#     value: Bruce Wayne
-#   # A regular expression with which to validate parameter values.
-#   regex: "^[a-zA-Z ]+$"
+parameters:
+- slug: description
+  name: Description
+  type: shorttext
+  description: Product description
+- slug: category_id
+  name: Category Id
+  type: shorttext
+  description: Category Id
 
 # Configuration for a SQL task.
 sql:
@@ -46,13 +29,14 @@ sql:
   # absolute or relative to the location of the definition file. The contents
   # of the .sql file support JavaScript templates
   # (https://docs.airplane.dev/runbooks/javascript-templates).
-  entrypoint: select_categories.sql
+  entrypoint: insert_product.sql
 
   # A map of query arguments that can be used to safely pass parameter inputs
   # to your query. Supports JavaScript templates
   # (https://docs.airplane.dev/runbooks/javascript-templates).
-  # queryArgs:
-  #   name: "{{params.name}}"
+  queryArgs:
+    description: "{{params.description}}"
+    category_id: "{{params.category_id}}"
 
   # The transaction mode to use. Valid values: auto, readOnly, readWrite, none.
   # Default: auto.
